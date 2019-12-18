@@ -1,0 +1,7 @@
+{
+  "HTTP_PORT": 3000,
+  "CRUD_URL": "https://demo.preprod.mia-platform.eu/v2",
+  "PLAYGROUND": {
+      "endpoint": "route"
+  }
+}
