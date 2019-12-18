@@ -1,7 +1,3 @@
-### TODO
-* add mutations
-* implement crud resolvers as an external module/library
-
 # graphql-custom-plugin
 ![pipeline status](https://git.tools.mia-platform.eu/platform/templates/graphql-template/badges/master/pipeline.svg)  
 ![coverage report](https://git.tools.mia-platform.eu/platform/templates/graphql-template/badges/master/coverage.svg)
@@ -27,7 +23,7 @@ GraphQL is the way to go when have to deal with:
 
 ## Local Development
 To develop the service locally you need:
-- Node 8+
+- Node +
 
 To setup node, please if possible try to use [nvm][nvm], so you can manage multiple
 versions easily. Once you have installed nvm, you can go inside the directory of the project and simply run
@@ -44,7 +40,7 @@ page in `coverage/lcov-report/index.html`.
 After running the coverage you can create your local copy of the default values for the `env` variables needed for
 launching the application.
 ```shell
-npm run start:init
+cp ./default.env ./environments/local.env
 ```
 
 From now on, if you want to change anyone of the default values for the variables you can do it inside the `./environments/local.env`
@@ -80,7 +76,7 @@ curl --header "Content-Type: application/json" \
 ## How it works
 
 This plugin is thought to call a CRUD endpoint to fetch data from.  
-In the collection name param you should enter the CRUD endpoint name (e.g. pokemons).  
+In the collection name param you should enter the CRUD endpoint name (e.g. books).  
 The CRUD base url to be called it's the value of CRUD_URL environment variable.
 
 If PLAYGROUND environment variable value is set to `true` the `apollo-server playground` will be exposed (this is by default).
@@ -99,7 +95,7 @@ If PLAYGROUND environment variable value is set to `true` the `apollo-server pla
 ## count a collection
 ```
 {
-  collection(name: "pokemons") {
+  collection(name: "books") {
     count
   }
 }
@@ -108,7 +104,7 @@ If PLAYGROUND environment variable value is set to `true` the `apollo-server pla
 ## list a collection
 ```
 {
-  collection(name: "pokemons") {
+  collection(name: "books") {
     list {
       _id,
       name
@@ -120,7 +116,7 @@ If PLAYGROUND environment variable value is set to `true` the `apollo-server pla
 ## list & count a collection
 ```
 {
-  collection(name: "pokemons") {
+  collection(name: "books") {
     list {
       _id,
       name
@@ -133,7 +129,7 @@ If PLAYGROUND environment variable value is set to `true` the `apollo-server pla
 ## count multiple collection with aliases
 ```
 {
-  pokemons: collection(name: "pokemons") {
+  books: collection(name: "books") {
     count
   },
   superheroes: collection(name: "superheroes") {
@@ -145,7 +141,7 @@ If PLAYGROUND environment variable value is set to `true` the `apollo-server pla
 ## list & count multiple collection with aliases
 ```
 {
-  pokemons: collection(name: "pokemons") {
+  books: collection(name: "books") {
     list {
       _id,
       name
@@ -177,17 +173,28 @@ If PLAYGROUND environment variable value is set to `true` the `apollo-server pla
       _id
     }
   }  
-  pikachus:collection(name: "pokemons") {
+  pikachus:collection(name: "books") {
     list(name: "pikachu") {
       name,
       _id
     }
   }
-  bulbasaurs:collection(name: "pokemons") {
+  bulbasaurs:collection(name: "books") {
     list(name: "bulbasaur") {
       name,
       _id
     }
+  }  
+}
+```
+
+## Contributing
+To contribute to the project, please be mindful for this simple rules:
+1. Don’t commit directly on master
+2. Start your branches with `feature/` or `fix/` based on the content of the branch
+3. If possible, refer to the Jira issue id, inside the name of the branch, but not call it only `fix/BAAST3000`
+4. Always commit in english
+5. Once you are happy with your branch, open a [Merge Request][merge-request]
   }  
 }
 ```

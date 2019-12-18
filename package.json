@@ -11,36 +11,35 @@
     "coverage": "npm run unit -- --coverage-report=text-summary",
     "postcoverage": "tap --coverage-report=lcov --no-browser",
     "lint": "exit 0",
-    "start": "env-cmd environments/local.env npm run start:no-env-vars",
+    "start": "env-cmd -f ./environments/local.env npm run start:no-env-vars",
     "start:no-env-vars": "node lib/index.js",
     "start:local": "set -a && . ./environments/local.env && npm run start:no-env-vars",
-    "start:init": "cp ./default.env ./environments/local.env",
     "docker:build": "docker build -t graphql .",
     "docker:run": "docker run --env-file ./environments/local.env -p 3000:3000 graphql:latest",
     "test": "npm run lint && npm run unit && npm run checkonly",
-    "unit": "MONGO_HOST=${MONGO_HOST_CI:-localhost} tap -b -o tap.log test/*.test.js",
+    "unit": "tap -b -o tap.log test/*.test.js",
     "update-docker-version": "sed -i.bck \"s|version=\\\"[0-9]*\\.[0-9]*\\.[0-9]*.*\\\"|version=\\\"${npm_package_version}\\\"|\" Dockerfile",
     "version": "npm run update-docker-version && rm -fr Dockerfile.bck && git add Dockerfile"
   },
   "repository": {
     "type": "git",
-    "url": "git@git.tools.mia-platform.eu/platform/templates/graphql-template.git"
+    "url": "git@github.com:mia-platform-marketplace/GraphQL-Custom-Plugin-Template.git"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "apollo-server": "^2.9.13",
+    "apollo-server": "^2.9.14",
     "env-cmd": "^10.0.1",
-    "got": "^10.0.3",
+    "got": "^10.0.4",
     "graphql": "^14.5.8"
   },
   "devDependencies": {
     "@mia-platform/standard-mia": "^1.1.0",
-    "apollo-server-testing": "^2.9.13",
+    "apollo-server-testing": "^2.9.14",
     "pre-commit": "^1.2.2",
     "sinon": "^7.5.0",
     "snazzy": "^8.0.0",
-    "tap": "^14.10.2"
+    "tap": "^14.10.5"
   },
   "engines": {
     "node": ">=10"
