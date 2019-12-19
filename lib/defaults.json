@@ -1,0 +1,7 @@
+{
+  "HTTP_PORT": 3000,
+  "CRUD_URL": "http://crud-path",
+  "PLAYGROUND": {
+      "endpoint": "route"
+  }
+}
