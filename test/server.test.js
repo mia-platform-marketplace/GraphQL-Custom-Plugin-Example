@@ -26,11 +26,6 @@ const t = require('tap')
 const { httpTestDouble } = require('./httpTestDouble')
 const query = require('./testServer.js')
 
-t.test('Trivial test', t => {
-  t.plan(1)
-  t.equal(true, true)
-})
-
 t.test('Status', async t => {
   t.plan(1)
   const server = query()

@@ -1,5 +1,5 @@
 {
-  "name": "graphql-custom-plugin",
+  "name": "%CUSTOM_PLUGIN_SERVICE_NAME%",
   "version": "1.0.0",
   "description": "Mia-Platform GraphQL custom plugin",
   "main": "index.js",
