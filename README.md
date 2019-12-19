@@ -132,7 +132,7 @@ If PLAYGROUND environment variable value is set to `true` the `apollo-server pla
   books: collection(name: "books") {
     count
   },
-  superheroes: collection(name: "superheroes") {
+  cars: collection(name: "cars") {
     count
   }
 }
@@ -148,7 +148,7 @@ If PLAYGROUND environment variable value is set to `true` the `apollo-server pla
     },
     count
   },
-  superheroes: collection(name: "superheroes") {
+  cars: collection(name: "cars") {
     list {
       _id,
       name
@@ -160,27 +160,15 @@ If PLAYGROUND environment variable value is set to `true` the `apollo-server pla
 
 ## multiple filtered list with aliases
 ```
-{
-  captainAmericas:collection(name: "superheroes") {
-    list(name: "Captain America (Steven Rogers)") {
+{ 
+  daVinciCode:collection(name: "books") {
+    list(name: "daVinciCode") {
       name,
       _id
     }
   }
-  goodGirlz:collection(name: "superheroes") {
-    list(sex: "female", align: "good", hair: "blonde", eyes: "blue") {
-      name,
-      _id
-    }
-  }  
-  pikachus:collection(name: "books") {
-    list(name: "pikachu") {
-      name,
-      _id
-    }
-  }
-  bulbasaurs:collection(name: "books") {
-    list(name: "bulbasaur") {
+  theNameOfTheRose:collection(name: "books") {
+    list(name: "theNameOfTheRose") {
       name,
       _id
     }
