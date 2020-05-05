@@ -35,7 +35,7 @@
   },
   "devDependencies": {
     "@mia-platform/standard-mia": "^1.1.0",
-    "apollo-server-testing": "^2.9.14",
+    "apollo-server-testing": "^2.13.0",
     "pre-commit": "^1.2.2",
     "sinon": "^7.5.0",
     "snazzy": "^8.0.0",
