@@ -53,6 +53,8 @@ npm run start:local
 
 After that you will have the service exposed on your machine on port 3000.
 
+NOTE: to actually use the service on your local machine you also have to launch an instance of Mia-Platform `crud-service`.
+
 ## Launch docker locally
 ```shell
 docker build -t graphql .
