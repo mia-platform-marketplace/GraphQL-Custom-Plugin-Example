@@ -26,7 +26,7 @@
     "apollo-server": "^2.14.2",
     "env-cmd": "^10.1.0",
     "got": "^11.3.0",
-    "graphql": "^15.0.0"
+    "graphql": "^15.1.0"
   },
   "devDependencies": {
     "@mia-platform/standard-mia": "^1.1.0",
