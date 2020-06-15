@@ -1,200 +1,96 @@
-# graphql-custom-plugin
-![pipeline status](https://git.tools.mia-platform.eu/platform/templates/graphql-template/badges/master/pipeline.svg)  
-![coverage report](https://git.tools.mia-platform.eu/platform/templates/graphql-template/badges/master/coverage.svg)
 
-## What is GraphQL?
+# Node.js GraphQL Example walkthrough
 
-GraphQL is a query language for APIs and a runtime for fulfilling those queries with your existing data. GraphQL provides a complete and understandable description of the data in your API, gives clients the power to ask for exactly what they need and nothing more, makes it easier to evolve APIs over time, and enables powerful developer tools.
+This walkthrough will explain you how to correctly create a GraphQL microservice that is connected to a CRUD of books from the DevOps Console.
 
-## When should I use GraphQL?
-GraphQL is the way to go when have to deal with:  
-* complex data structures (e.g. deeply nested data)
-* different types of data at the same time (e.g. analytics dashboards)
-* when flexibility is needed (e.g. you may want to change client-server interface easily)  
+In order to do so, access to [Mia-Platform DevOps Console](https://console.cloud.mia-platform.eu/login), create a new project and go to the **Design** area. From the Design area of your project select "Microservices" on the menu on the left sidebar and then create a new microservice, you have now reached [Mia-Platform Marketplace](https://docs.mia-platform.eu/development_suite/api-console/api-design/marketplace/)!  
+In the marketplace you will see a set of Examples and Templates that can be used to set-up microservices with a predefined and tested function.
 
-### You can read here if you want to know more
-[`Quora`](https://www.quora.com/When-should-I-use-GraphQL-for-my-web-application)  
-[`Paypal Success story`](https://medium.com/paypal-engineering/graphql-a-success-story-for-paypal-checkout-3482f724fb53)  
-[`GraphQL vs Redux`](https://hackernoon.com/how-graphql-replaces-redux-3fff8289221d)  
-[`Official getting started guide`](https://graphql.org/learn/)  
-[`GraphQL patterns`](https://medium.com/@JeffLombardJr/when-and-why-to-use-graphql-24f6bce4839d)  
+For this walkthrough select the following template: **Node.js GraphQL Example**.
+Give to your microservice the following name: **graphql-example**. Then, fill the other required fields and confirm that you want to create a microservice.  
+A more detailed description on how to create a Microservice can be found in [Microservice from template - Get started](https://docs.mia-platform.eu/development_suite/api-console/api-design/custom_microservice_get_started/#2-service-creation) section of Mia-Platform documentation.
 
-# graphql-custom-plugin
+In order to run this example correctly, it is necessary to remove the default probes of your microservice. To do so, go to the table *Microservice configuration* of the newly created microservice *graphql-example* in the section *Probes*. Once here, delete both the default readiness and liveness paths.
 
-## Local Development
-To develop the service locally you need:
-- Node +
+This example requires to set the value of an environment variable to work properly. Go to the table *Environment variable configuration* of the newly created microservice *graphql-example* and add the following (key = value):
 
-To setup node, please if possible try to use [nvm][nvm], so you can manage multiple
-versions easily. Once you have installed nvm, you can go inside the directory of the project and simply run
-`nvm install`, the `.nvmrc` file will install and select the correct version if you don’t already have it.
-
-Once you have all the dependency in place, you can launch:
 ```shell
-npm i
-npm run coverage
+CRUD_URL = http://crud-service
 ```
 
-This two commands, will install the dependencies and run the tests with the coverage report that you can view as an HTML
-page in `coverage/lcov-report/index.html`.
-After running the coverage you can create your local copy of the default values for the `env` variables needed for
-launching the application.
+More information on how to set an environment variable can be found in [Environment Variable Configuration](https://docs.mia-platform.eu/development_suite/api-console/api-design/services/#environment-variable-configuration) section of Mia-Platform documentation.
+
+In order to access to our new microservice it is necessary to create an endpoint to it.  
+In particular, in this walkthrough we will create an endpoint to our microservice *graphql-example*. To do so, from the Design area of your project select "Endpoints" on the menu on the left sidebar and then create a new endpoint.  
+Now we need to choose a path for our endpoint and to connect this endpoint to our microservice. Give to your endpoint the following path: **/graphql**. Then, specify that you want to connect your endpoint to a microservice and, finally, select *graphql-example*.  
+Step 3 of [Microservice from template - Get started](https://docs.mia-platform.eu/development_suite/api-console/api-design/custom_microservice_get_started/#3-creating-the-endpoint) section of Mia-Platform documentation will explain in detail how to create an endpoint from the DevOps Console.
+
+The microservice that we have just created is supposed to connect to a CRUD and to perform requests to it using GraphQL. The next step is to create a CRUD of books (but any other CRUD will work fine) so that our microservice can connect to it.  
+
+From the Design area of your project select "CRUD" on the menu on the left sidebar. Give your CRUD the following name: **books_crud**. Then confirm that you want to create a CRUD.  
+Once you have created your CRUD of books you can add some properties to it. In this walkthrough we add one simple propertiy to our CRUD: *name*, of type *String*.  
+A more deatiled description on how to create and add properties to a CRUD can be found in [CRUD](https://docs.mia-platform.eu/development_suite/api-console/api-design/crud_advanced/) section of Mia-Platform documentation.
+
+Now we need to expose this CRUD with an endpoint. In a similar way to what we have done when creating an endpoint to our microservice, we have to select "Endpoints" from the menu on the left sidebar.  
+Give to your endpoint the following path: **/books**. Then, specify that you want to connect your endpoint to a CRUD and, finally, select *books_crud*.
+
+After having created an endpoint to your CRUD you should save the changes that you have done to your project in the DevOps console.  Remember to choose a meaningful title for your commit (e.g "example_graphql_creation"). After some seconds you will be prompted with a popup message which confirms that you have successfully saved all your changes.  
+Step 4 of [Microservice from template - Get started](https://docs.mia-platform.eu/development_suite/api-console/api-design/custom_microservice_get_started/#4-save-the-project) section of Mia-Platform documentation will explain how to correctly save the changes you have made on your project in the DevOps console.
+
+Once all the changes that we have made are saved, we are now able to deploy our project through the DevOps Console. Go to the **Deploy** area of the DevOps Console.  
+Once here select the environment and the branch you have worked on and confirm your choices clicking on the *deploy* button. When the deploy process is finished you will receveive a pop-up message that will inform you.  
+Step 5 of [Microservice from template - Get started](https://docs.mia-platform.eu/development_suite/api-console/api-design/custom_microservice_get_started/#5-deploy-the-project-through-the-api-console) section of Mia-Platform documentation will explain in detail how to correctly deploy your project.
+
+Now, if you copy/paste the following url in the search bar of your broser:
+
 ```shell
-cp ./default.env ./environments/local.env
+https://<YOUR_PROJECT_HOST>/graphql/
 ```
 
-From now on, if you want to change anyone of the default values for the variables you can do it inside the `./environments/local.env`
-file without pushing it to the remote repository.
+(remember to replace `<YOUR_PROJECT_HOST>` with the real host of your project)  
 
-Once you have all your dependency in place you can launch:
+You should access to GraphQL Playground, a graphical IDE for GraphQL. For more information about GraphQL Playground you can visit [GraphQL Playground](https://www.apollographql.com/docs/apollo-server/testing/graphql-playground/) section of Apollo Server documentation.
+
+Since there are no books in our CRUD, you should first launch a POST request on your terminal to populate your bookstore:
+
 ```shell
-npm run start:local
-```
+curl --request POST \
+  --url https://<YOUR_PROJECT_HOST>/v2/books/ \
+  --header 'accept: */*' \
+  --header 'content-type: application/json' \
+  --data '{"name":"foo","__STATE__":"PUBLIC"}'
+  ```
 
-After that you will have the service exposed on your machine on port 3000.
+After launching this command you should see in your terminal the id (<YOUR_BOOK_ID>) of the book that we have just inserted in our CRUD.
 
-NOTE: to actually use the service on your local machine you also have to launch an instance of Mia-Platform `crud-service`.
+Now, you can type the following query on the left side of GraphQL Playground:
 
-## Launch docker locally
-```shell
-docker build -t graphql .
-docker run --env-file ./environments/local.env -p 3000:3000 graphql:latest
-```
-
-[nvm]: https://github.com/creationix/nvm
-
-## Getting started with GraphQL
-Once launched you can start playing inside the playground (copy and paste the following queries to get going).
-
-Alternatively using curl
-
-```
-curl --header "Content-Type: application/json" \
-  --request POST \
-  --data '{"operationName":null,"variables":{},"query":"{\n  status {\n    ready\n    healthz\n  }\n}\n"}' \
-  http://127.0.0.1:3000/
-```
-
-## How it works
-
-This plugin is thought to call a CRUD endpoint to fetch data from.  
-In the collection name param you should enter the CRUD endpoint name (e.g. books).  
-The CRUD base url to be called it's the value of CRUD_URL environment variable.
-
-If PLAYGROUND environment variable value is set to `true` the `apollo-server playground` will be exposed (this is by default).
-
-## **query examples**
-## healthiness & readiness query
-```
-{
-  status {
-    ready,
-    healthz
-  }
-}
-```
-
-## count a collection
-```
-{
-  collection(name: "books") {
-    count
-  }
-}
-```
-
-## list a collection
-```
+```GraphQL
 {
   collection(name: "books") {
     list {
       _id,
       name
     }
-  } 
-}
-```
-
-## list & count a collection
-```
-{
-  collection(name: "books") {
-    list {
-      _id,
-      name
-    },
-    count
-  } 
-}
-```
-
-## count multiple collection with aliases
-```
-{
-  books: collection(name: "books") {
-    count
-  },
-  cars: collection(name: "cars") {
-    count
   }
 }
 ```
 
-## list & count multiple collection with aliases
-```
-{
-  books: collection(name: "books") {
-    list {
-      _id,
-      name
-    },
-    count
-  },
-  cars: collection(name: "cars") {
-    list {
-      _id,
-      name
-    },
-    count
-  }
-}
-```
+the response that you see should on the right side of GraphQL Playground should be like the following:
 
-## multiple filtered list with aliases
-```
-{ 
-  daVinciCode:collection(name: "books") {
-    list(name: "daVinciCode") {
-      name,
-      _id
+```json
+{
+  "data": {
+    "collection": {
+      "list": [
+        {
+          "_id": "<YOUR_BOOK_ID>",
+          "name": "foo"
+        }
+      ]
     }
   }
-  theNameOfTheRose:collection(name: "books") {
-    list(name: "theNameOfTheRose") {
-      name,
-      _id
-    }
-  }  
 }
 ```
 
-## Contributing
-To contribute to the project, please be mindful for this simple rules:
-1. Don’t commit directly on master
-2. Start your branches with `feature/` or `fix/` based on the content of the branch
-3. If possible, refer to the Jira issue id, inside the name of the branch, but not call it only `fix/BAAST3000`
-4. Always commit in english
-5. Once you are happy with your branch, open a [Merge Request][merge-request]
-  }  
-}
-```
-
-## Contributing
-To contribute to the project, please be mindful for this simple rules:
-1. Don’t commit directly on master
-2. Start your branches with `feature/` or `fix/` based on the content of the branch
-3. If possible, refer to the Jira issue id, inside the name of the branch, but not call it only `fix/BAAST3000`
-4. Always commit in english
-5. Once you are happy with your branch, open a [Merge Request][merge-request]
-
-_**Note:** The first project build will fail because the `package-lock.json` file is missing._
+Congratulations! You have successfully learnt how to use our Node.js GraphQL Example on the DevOps Console!
