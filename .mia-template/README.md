@@ -1,8 +1,4 @@
-
 # graphql-custom-plugin
-
-![pipeline status](https://git.tools.mia-platform.eu/platform/templates/graphql-template/badges/master/pipeline.svg)  
-![coverage report](https://git.tools.mia-platform.eu/platform/templates/graphql-template/badges/master/coverage.svg)
 
 ## What is GraphQL?
 

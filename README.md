@@ -1,6 +1,7 @@
 # Node.js GraphQL Example walkthrough
 
 [![Build Status][github-actions-svg]][github-actions]
+[![Coverage Status][coverall-svg]][coverall-io]
 
 This walkthrough will explain you how to correctly create a GraphQL microservice that is connected to a CRUD of books from the DevOps Console.
 
@@ -114,3 +115,5 @@ Congratulations! You have successfully learnt how to use our Node.js _GraphQL_ E
 
 [github-actions]: https://github.com/mia-platform-marketplace/GraphQL-Custom-Plugin-Example/actions
 [github-actions-svg]: https://github.com/mia-platform-marketplace/GraphQL-Custom-Plugin-Example/workflows/Node.js%20CI/badge.svg
+[coverall-svg]: https://coveralls.io/repos/github/mia-platform-marketplace/GraphQL-Custom-Plugin-Example/badge.svg?branch=master
+[coverall-io]: https://coveralls.io/github/mia-platform-marketplace/GraphQL-Custom-Plugin-Example?branch=master
