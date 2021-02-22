@@ -36,7 +36,7 @@ A more detailed description on how to create and add properties to a CRUD can be
 ## Expose an endpoint to your CRUD
 
 You now need to expose this CRUD with an endpoint. In a similar way to what you have done when creating an endpoint to your microservice, you have to select _Endpoints_ section again.  
-Give to your endpoint the following path: **/books**. Then, specify that you want to connect your endpoint to a CRUD and, finally, select */books_crud*.
+Give to your endpoint the following path: **/books**. Then, specify that you want to connect your endpoint to a CRUD and, finally, select */books-crud*.
 
 ## Save your changes
 
