@@ -1,0 +1,36 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "04:00"
+  open-pull-requests-limit: 10
+  target-branch: develop
+  ignore:
+  - dependency-name: tap
+    versions:
+    - 15.0.0
+    - 15.0.1
+    - 15.0.2
+    - 15.0.3
+    - 15.0.4
+  - dependency-name: y18n
+    versions:
+    - 4.0.1
+    - 4.0.2
+  - dependency-name: apollo-server
+    versions:
+    - 2.21.1
+    - 2.21.2
+    - 2.22.1
+    - 2.22.2
+  - dependency-name: apollo-server-testing
+    versions:
+    - 2.21.1
+    - 2.21.2
+    - 2.22.1
+    - 2.22.2
+  - dependency-name: sinon
+    versions:
+    - 10.0.0
