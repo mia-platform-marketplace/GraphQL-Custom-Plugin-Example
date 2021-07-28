@@ -32,7 +32,7 @@
     "@mia-platform/standard-mia": "^1.1.0",
     "apollo-server-testing": "^2.21.0",
     "pre-commit": "^1.2.2",
-    "sinon": "^9.2.4",
+    "sinon": "^11.1.2",
     "snazzy": "^8.0.0",
     "tap": "^14.11.0"
   },
