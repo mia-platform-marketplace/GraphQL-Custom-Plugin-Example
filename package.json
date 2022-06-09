@@ -23,24 +23,31 @@
   },
   "license": "ISC",
   "dependencies": {
-    "apollo-server": "^2.21.0",
+    "apollo-server": "^3.8.2",
     "env-cmd": "^10.1.0",
     "got": "^11.8.1",
-    "graphql": "^15.5.0"
+    "graphql": "^15.8.0"
   },
   "devDependencies": {
-    "@mia-platform/standard-mia": "^1.1.0",
-    "apollo-server-testing": "^2.21.0",
+    "@mia-platform/eslint-config-mia": "^3.0.0",
+    "apollo-server-testing": "^2.20.0",
+    "eslint": "^8.17.0",
     "pre-commit": "^1.2.2",
-    "sinon": "^9.2.4",
-    "snazzy": "^8.0.0",
-    "tap": "^14.11.0"
+    "sinon": "^14.0.0",
+    "snazzy": "^9.0.0",
+    "tap": "^16.2.0"
   },
   "engines": {
-    "node": ">=10"
+    "node": ">=16"
   },
   "private": true,
   "eslintConfig": {
     "extends": "./node_modules/@mia-platform/eslint-config-mia/eslintrc.json"
+  },
+  "tap": {
+    "branches": 85,
+    "lines": 100,
+    "functions": 100,
+    "statements": 100
   }
 }

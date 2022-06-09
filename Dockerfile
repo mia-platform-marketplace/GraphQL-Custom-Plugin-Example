@@ -1,4 +1,4 @@
-FROM node:12.3.1-alpine as build
+FROM node:16.15.0-alpine as build
 
 ARG COMMIT_SHA=<not-specified>
 ENV NODE_ENV=production
@@ -15,7 +15,7 @@ RUN echo "service-name: $COMMIT_SHA" >> ./commit.sha
 
 ########################################################################################################################
 
-FROM node:12.3.1-alpine
+FROM node:16.15.0-alpine
 
 ENV NODE_ENV=production
 ENV LOG_LEVEL=warn
